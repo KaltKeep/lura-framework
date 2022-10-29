@@ -17,4 +17,5 @@ import java.lang.annotation.Target;
 @SpringBootApplication
 @EnableSwagger2Doc
 public @interface LuraBootApplication {
+    boolean autoRegister();
 }

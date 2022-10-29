@@ -45,3 +45,7 @@ spring:
 application.whitelist:
   - url: /product/product/**
     method: GET
+  - url: /**/login
+    method: POST
+  - url: /**/register
+    nethod: POST

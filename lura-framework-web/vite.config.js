@@ -18,12 +18,14 @@ module.exports = {
         }),
     ],
 
-    alias: {
-        // 键必须以斜线开始和结束
-        '/@/': path.resolve(__dirname, './src')
-        // '/@components/': path.resolve(__dirname, './src/components')
-    },
+
     resolve: {
+        alias: [
+            {
+                find: /\@\//,
+                replacement: pathResolve('src') + '/'
+            },
+        ],
         // 忽略后缀名的配置选项, 添加 .vue 选项时要记得原本默认忽略的选项也要手动写入
         extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue']
     }

@@ -1,1 +1,2 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=me.luraframework.core.commons.exception.GlobalExceptionHandlerAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  me.luraframework.core.commons.exception.GlobalExceptionHandlerAutoConfiguration

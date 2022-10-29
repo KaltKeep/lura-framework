@@ -26,8 +26,7 @@ public class TokenProvider {
 
     }
 
-    public JwtUser checkToken(HttpServletRequest request) {
-        String token = request.getHeader("Token");
+    public JwtUser checkToken(String token) {
         try {
             String userType = JWT.decode(token).getClaim(USER_TYPE_CLAIM_KEY).asString();
             String userStr = JWT.decode(token).getClaim(USER_CLAIM_KEY).asString();

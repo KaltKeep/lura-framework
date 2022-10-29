@@ -1,9 +1,11 @@
 package me.luraframework.gateway.filter;
 
+import com.google.common.collect.ImmutableMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.luraframework.commons.exception.AppException;
 import me.luraframework.gateway.config.ApplicationProperties;
+import me.luraframework.gateway.constant.HttpKey;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -30,31 +32,45 @@ public class TokenFilter implements GlobalFilter, Ordered {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        if (isWhitelist(exchange)){
+            return chain.filter(exchange);
+        }
+
+        return doAuthentication(exchange)
+                .then(chain.filter(exchange));
+    }
+
+    private boolean isWhitelist(ServerWebExchange exchange) {
         String path = exchange.getRequest().getPath().value();
         String method = exchange.getRequest().getMethodValue();
         for (ApplicationProperties.Whitelist whitelist : applicationProperties.getWhitelist()) {
             if (method.equalsIgnoreCase(whitelist.getMethod()) && antPathMatcher.match(whitelist.getUrl(), path)) {
-                return chain.filter(exchange);
+                return true;
             }
         }
-        String token = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
-        if (antPathMatcher.match("/**/login", path) || antPathMatcher.match("/**/register", path)) {
-            return chain.filter(exchange);
-        }
+        return false;
+    }
+
+    private Mono<String> doAuthentication(ServerWebExchange exchange) {
+
+        String token = getToken(exchange);
         if (Strings.isBlank(token)) {
             return Mono.error(new AppException(UNAUTHORIZED, of()));
         }
+
         return builder.build().post()
-                      .uri(applicationProperties.getAuth().getCheckUrl())
-                      .header("Token", token)
+                      .uri(applicationProperties.getAuth().getCheckUrl(), ImmutableMap.of("accessToken", token))
                       .contentType(MediaType.APPLICATION_JSON)
                       .retrieve()
                       .onStatus(HttpStatus::is4xxClientError, clientResponse -> Mono.error(new AppException(INVALID_TOKEN, of())))
                       .onStatus(HttpStatus::is5xxServerError, clientResponse -> Mono.error(new AppException(INVALID_TOKEN, of())))
                       .bodyToMono(String.class)
                       .doOnNext(log::info)
-                      .doOnNext(userInfo -> exchange.getRequest().mutate().header("userInfo", userInfo))
-                      .then(chain.filter(exchange));
+                      .doOnNext(userInfo -> exchange.getRequest().mutate().header("userInfo", userInfo));
+    }
+
+    private String getToken(ServerWebExchange exchange) {
+        return exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
     }
 
     @Override

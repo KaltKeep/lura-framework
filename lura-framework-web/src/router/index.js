@@ -8,10 +8,16 @@ const routes = [
         component: () => import('../layout/index.vue'),
         children: [
             {
+                path: '/app/gateway',
+                name: 'Gateway',
+                component: () => import('../pages/gateway/index.vue')
+            },
+            {
                 path: '/app/:app',
                 name: 'Home',
                 component: () => import('../components/app-frame.vue')
             },
+
             {
                 path: '/home',
                 component: ()=> import('../pages/home.vue')

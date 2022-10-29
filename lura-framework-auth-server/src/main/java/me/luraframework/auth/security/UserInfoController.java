@@ -4,17 +4,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-
 @RestController
 @RequiredArgsConstructor
-public class AuthCheckController {
+public class UserInfoController {
 
     private final TokenProvider tokenProvider;
     private final OnlineService onlineService;
 
-    @PostMapping("check")
-    public JwtUser check(HttpServletRequest request) {
-        return tokenProvider.checkToken(request);
+    @PostMapping("/v1/userInfoByToken")
+    public JwtUser getUserInfoByToken(String accessToken) {
+        return tokenProvider.checkToken(accessToken);
     }
 }

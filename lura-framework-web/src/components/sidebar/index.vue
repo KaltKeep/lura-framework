@@ -1,21 +1,25 @@
 <template>
 <!--  <logo :collapse="isCollapse" />-->
   <el-menu
-      default-active="2"
+      router
       class="el-menu-vertical-demo"
       :collapse="isCollapse"
       @open="handleOpen"
       @close="handleClose"
   >
-    <el-menu-item index="1" @click="toPath('zipkin')">
+    <el-menu-item index="/app/gateway" >
+      <el-icon><location /></el-icon>
+      <template #title>网关配置</template>
+    </el-menu-item>
+    <el-menu-item index="/app/zipkin" >
         <el-icon><location /></el-icon>
         <template #title>Zipkin</template>
     </el-menu-item>
-    <el-menu-item index="2" @click="toPath('nacos')">
+    <el-menu-item index="/app/nacos" >
       <el-icon><icon-menu /></el-icon>
       <template #title>Nacos</template>
     </el-menu-item>
-    <el-menu-item index="3" @click="toPath('sentinel')">
+    <el-menu-item index="/app/sentinel" >
       <el-icon><document /></el-icon>
       <template #title>Sentinel</template>
     </el-menu-item>
@@ -40,7 +44,7 @@ export default {
     logo
   },
   data() {
-    const isCollapse = true
+    const isCollapse = false
     const handleOpen = (key, keyPath) => {
       console.log(key, keyPath)
     }
@@ -53,11 +57,7 @@ export default {
       handleClose,
     }
   },
-   methods: {
-     toPath(app) {
-       this.$router.push({path: `/app/${app}`})
-     }
-   }
+
 }
 </script>
 

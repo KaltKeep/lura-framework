@@ -10,6 +10,11 @@ plugins {
 group 'io.github.luraframework'
 version '0.0.2-SNAPSHOT'
 
+//jar {
+//  enabled = true
+//  archiveClassifier = ''
+//}
+
 
 def jarProject = subprojects.findAll {
   it.name.endsWith("starter")
@@ -33,6 +38,10 @@ configure(jarProject) {
       mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.4"
       mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2.2.6.RELEASE"
     }
+  }
+
+  tasks.named("jar") {
+    archiveClassifier = ''
   }
 
 

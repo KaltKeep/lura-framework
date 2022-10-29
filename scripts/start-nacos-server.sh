@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-./start-net.sh
+
 
 workdir=$(dirname $(cd $(dirname "$0"); pwd))
+
+$(workdir)/start-net.sh
+
 echo "current dir is: $workdir"
 
 cd $workdir/lura-nacos-server

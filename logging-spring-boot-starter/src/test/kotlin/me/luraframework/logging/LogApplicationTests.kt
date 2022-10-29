@@ -1,4 +1,4 @@
-package me.lura.logging
+package me.luraframework.logging
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

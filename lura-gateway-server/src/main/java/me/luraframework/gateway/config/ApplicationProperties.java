@@ -17,7 +17,7 @@ public class ApplicationProperties {
 
     @Data
     public static class Auth {
-        private String checkUrl = "http://lura-framework-auth-server/auth/check";
+        private String checkUrl = "http://lura-framework-auth-server/auth/v1/userInfoByToken?accessToken={accessToken}";
     }
 
     @Data

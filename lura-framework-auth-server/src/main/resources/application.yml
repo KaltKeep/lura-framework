@@ -18,13 +18,13 @@ spring:
       datasource:
         flow:
           nacos:
-            server-addr: ${SPRING_CLOUD_NACOS_DISCOVERY_SERVERADDR:localhost}:8848
+            server-addr: ${SPRING_CLOUD_NACOS_DISCOVERY_SERVERADDR:localhost:8848}
             dataId: ${spring.application.name}-flow-rules
             groupId: SYSTEM
             rule-type: flow
       transport:
         port: 8719
-        dashboard: http://${SPRING_CLOUD_NACOS_DISCOVERY_SERVERADDR:localhost}:8858
+        dashboard: http://${SPRING_CLOUD_NACOS_DISCOVERY_SERVERADDR:localhost:8858}
       http-method-specify: true
   jpa:
     hibernate:

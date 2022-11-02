@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class RequestLogFilter extends OncePerRequestFilter {
 
-    private final String[] skippedUrls = {"/**/api-docs/**", "/swagger-ui/*", "/actuator/**"};
+    private final String[] skippedUrls = {"/**/api-docs/**", "/swagger-ui/*", "/actuator/**", "/webjars/**", "/swagger-ui.html", "/swagger-resources/**"};
     private final AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Override

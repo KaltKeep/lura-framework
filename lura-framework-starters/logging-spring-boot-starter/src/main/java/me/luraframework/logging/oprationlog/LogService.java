@@ -1,4 +1,4 @@
-package me.luraframework.logging.aspect;
+package me.luraframework.logging.oprationlog;
 
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +17,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @description: 操作日志服务类
+ * @author: LiuRan
+ * @data: 10/25/22 15:56
+ */
 
 @Slf4j
 @Service
@@ -26,9 +31,9 @@ public class LogService {
     public void save(ProceedingJoinPoint joinPoint, String browser, String ip, long cost) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
-        me.luraframework.logging.annotation.Log aopLog = method.getAnnotation(me.luraframework.logging.annotation.Log.class);
+        Log aopLog = method.getAnnotation(Log.class);
 
-        Log operationLog = new Log("INFO", cost, browser, ip);
+        OperationLog operationLog = new OperationLog("INFO", cost, browser, ip);
         operationLog.setDescription(aopLog.value());
 
         // 方法路径

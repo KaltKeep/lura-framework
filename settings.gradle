@@ -7,7 +7,7 @@ pluginManagement {
 }
 
 rootProject.name = 'lura-framework'
-include 'logging-spring-boot-starter'
+include 'lura-framework-starters:logging-spring-boot-starter'
 include 'lura-zipkin-server'
 include 'lura-nacos-server'
 include 'lura-gateway-server'
@@ -16,4 +16,9 @@ include 'lura-framework-auth-server'
 include 'lura-framework-core'
 include 'lura-framework-commons'
 include 'lura-framework-security-core'
+include 'lura-framework-starters'
+
+file("${rootDir}/lura-framework-starters").eachDirMatch(~/.*-starter/) {
+  include "spring-boot-project:spring-boot-starters:${it.name}"
+}
 

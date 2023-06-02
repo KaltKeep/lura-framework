@@ -4,6 +4,9 @@ spring:
   application:
     name: lura-gateway-server
   cloud:
+    nacos:
+      discovery:
+        enabled: false
     gateway:
       routes:
       - id: path_route

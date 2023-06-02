@@ -9,13 +9,13 @@ description 'The starter of lura framework'
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2020.0.4"
-        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:2021.1"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
     }
 }
 
 dependencies {
-    api project(":lura-framework-core")
+    api project(":lura-framework:lura-framework-core")
 
     api 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
     api 'com.alibaba.csp:sentinel-datasource-nacos'

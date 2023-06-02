@@ -4,21 +4,28 @@ pluginManagement {
     id 'org.jetbrains.kotlin.plugin.spring' version "${kotlinVersion}"
     id 'org.springframework.boot' version "${springBootVersion}"
   }
+  repositories {
+    mavenCentral()
+    gradlePluginPortal()
+  }
+}
+
+plugins {
+  id "com.gradle.enterprise" version "3.12.5"
+  id "io.spring.ge.conventions" version "0.0.13"
 }
 
 rootProject.name = 'lura-framework'
-include 'lura-framework-starters:logging-spring-boot-starter'
-include 'lura-zipkin-server'
-include 'lura-nacos-server'
-include 'lura-gateway-server'
-include 'lura-framework-spring-boot-starter'
-include 'lura-framework-auth-server'
-include 'lura-framework-core'
-include 'lura-framework-commons'
-include 'lura-framework-security-core'
-include 'lura-framework-starters'
+include 'lura-framework:lura-framework-core'
+include 'lura-framework:lura-framework-security-core'
+include 'lura-framework:lura-framework-spring-boot-starter'
+include 'lura-framework:lura-framework-commons'
+include 'lura-framework:lura-framework-starters'
 
-file("${rootDir}/lura-framework-starters").eachDirMatch(~/.*-starter/) {
+include 'lura-server:lura-gateway-server'
+include 'lura-server:lura-framework-auth-server'
+
+file("${rootDir}/lura-framework/lura-framework-starters").eachDirMatch(~/.*-starter/) {
   include "spring-boot-project:spring-boot-starters:${it.name}"
 }
 

@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
 
-    implementation(project(":lura-framework-core"))
+    implementation(project(":lura-framework:lura-framework-core"))
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'

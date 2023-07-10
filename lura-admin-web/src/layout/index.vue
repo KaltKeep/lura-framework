@@ -1,17 +1,12 @@
 <template>
-  <logo />
-  <el-row>
-    <el-col :span="4">
-      <sidebar></sidebar>
-    </el-col>
-    <el-col :span="20">
-      <app-main></app-main>
-    </el-col>
-  </el-row>
+  <div style="height: 100%;display: flex;">
+    <sidebar></sidebar>
+    <app-main></app-main>
+  </div>
   <div :class="classObj" class="app__wrap">
     <!-- Classic -->
     <div v-if="showMenuTab" class="menu__tab">
-      <menu-tab />
+      <menu-tab/>
     </div>
     <div
         id="sidebar__wrap"
@@ -21,8 +16,8 @@
         'sidebar__wrap--tab': showMenuTab
       }"
     >
-      <logo v-if="showLogo && layout === 'Classic'" :collapsed="collapsed" />
-      <sider :layout="layout" mode="vertical" />
+      <logo v-if="showLogo && layout === 'Classic'" :collapsed="collapsed"/>
+      <sider :layout="layout" mode="vertical"/>
     </div>
 
     <div
@@ -59,32 +54,31 @@
                 class="hover-container"
                 @toggleClick="setCollapsed"
             />
-            <breadcrumb v-if="showBreadcrumb" id="breadcrumb-container" />
+            <breadcrumb v-if="showBreadcrumb" id="breadcrumb-container"/>
             <div v-if="showScreenfull || showUserInfo" class="navbar__wrap--right">
-              <screenfull v-if="showScreenfull" class="hover-container screenfull-container" />
-              <user-info v-if="showUserInfo" class="hover-container user-container" />
+              <screenfull v-if="showScreenfull" class="hover-container screenfull-container"/>
+              <user-info v-if="showUserInfo" class="hover-container user-container"/>
             </div>
           </div>
           <div v-if="showTags" id="tag-container" class="tags__wrap">
-            <tags-view />
+            <tags-view/>
           </div>
         </div>
-        <app-main />
       </el-scrollbar>
     </div>
 
     <!-- setting -->
-    <setting />
+    <setting/>
     <!-- setting -->
 
-    <backtop v-if="showBackTop" />
+    <backtop v-if="showBackTop"/>
   </div>
 </template>
 
 <script setup>
 import sidebar from "@/components/sidebar/index.vue";
 import AppMain from "./app-main.vue";
-import Logo from 'components/Logo/index.vue'
+import Logo from '@/components/sidebar/Logo.vue'
 
 
 </script>

@@ -1,0 +1,28 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    //'primary': (
+    //  'base': #000000,
+    //),
+    //'info': (
+    //  'base': #000000,
+    //),
+  ),
+);
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  height: 100%;
+  /*margin-top: 60px;*/
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+
+

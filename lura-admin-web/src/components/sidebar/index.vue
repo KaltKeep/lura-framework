@@ -1,29 +1,32 @@
 <template>
-<!--  <logo :collapse="isCollapse" />-->
-  <el-menu
-      router
-      class="el-menu-vertical-demo"
-      :collapse="isCollapse"
-      @open="handleOpen"
-      @close="handleClose"
-  >
-    <el-menu-item index="/app/gateway" >
-      <el-icon><location /></el-icon>
-      <template #title>网关配置</template>
-    </el-menu-item>
-    <el-menu-item index="/app/zipkin" >
+  <div class="sidebar">
+    <logo :collapse="isCollapse" />
+    <el-menu
+        router
+        class="el-menu-vertical-demo"
+        :collapse="isCollapse"
+        @open="handleOpen"
+        @close="handleClose"
+    >
+      <el-menu-item index="/app/gateway" >
+        <el-icon><location /></el-icon>
+        <template #title>网关配置</template>
+      </el-menu-item>
+      <el-menu-item index="/app/zipkin" >
         <el-icon><location /></el-icon>
         <template #title>Zipkin</template>
-    </el-menu-item>
-    <el-menu-item index="/app/nacos" >
-      <el-icon><icon-menu /></el-icon>
-      <template #title>Nacos</template>
-    </el-menu-item>
-    <el-menu-item index="/app/sentinel" >
-      <el-icon><document /></el-icon>
-      <template #title>Sentinel</template>
-    </el-menu-item>
-  </el-menu>
+      </el-menu-item>
+      <el-menu-item index="/app/nacos" >
+        <el-icon><icon-menu /></el-icon>
+        <template #title>Nacos</template>
+      </el-menu-item>
+      <el-menu-item index="/app/sentinel" >
+        <el-icon><document /></el-icon>
+        <template #title>Sentinel</template>
+      </el-menu-item>
+    </el-menu>
+  </div>
+
 </template>
 
 <script>
@@ -65,5 +68,12 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
+  background-color: white;
+  border-right: 0
+}
+.sidebar {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 </style>

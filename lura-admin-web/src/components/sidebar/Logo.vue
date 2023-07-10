@@ -26,6 +26,7 @@ export default {
 
 
 .sidebar-logo {
+  margin-top: 16px;
   margin-right: 0px;
   width: 50px;
   height: 50px;

@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 100%;display: flex;">
+  <div class="layout">
     <sidebar></sidebar>
     <app-main></app-main>
   </div>
@@ -68,7 +68,7 @@
     </div>
 
     <!-- setting -->
-    <setting/>
+<!--    <setting/>-->
     <!-- setting -->
 
     <backtop v-if="showBackTop"/>
@@ -84,5 +84,13 @@ import Logo from '@/components/sidebar/Logo.vue'
 </script>
 
 <style scoped>
-
+.layout {
+  height: 100%;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 </style>

@@ -19,7 +19,7 @@ const routes = [
             },
 
             {
-                path: '/home',
+                path: '/',
                 component: ()=> import('../pages/home.vue')
             }
         ]

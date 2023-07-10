@@ -6,7 +6,6 @@
     "build": "vite build"
   },
   "dependencies": {
-    "@element-plus/icons": "^0.0.11",
     "axios": "^1.4.0",
     "element-plus": "^2.3.7",
     "vite": "^4.4.2",

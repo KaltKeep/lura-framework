@@ -1,6 +1,5 @@
 plugins {
   id 'org.springframework.boot'
-  id 'org.jetbrains.kotlin.jvm' apply false
   id 'maven-publish'
   id "com.avast.gradle.docker-compose" version "0.14.9"
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
@@ -45,6 +44,8 @@ configure(jarProject) {
 
 
   repositories {
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/spring/'}
     mavenCentral()
     maven {
       url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'

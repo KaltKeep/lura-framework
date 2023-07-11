@@ -20,6 +20,8 @@ application {
 }
 
 repositories {
+    maven { url 'https://maven.aliyun.com/repository/public/' }
+    maven { url 'https://maven.aliyun.com/repository/spring/'}
     mavenCentral()
     maven { url 'https://repo.spring.io/milestone' }
     maven {
@@ -41,9 +43,10 @@ dependencies {
     implementation project(':lura-framework:lura-framework-commons')
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery'
-//    implementation 'com.alibaba.csp:sentinel-datasource-nacos'
     implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
     implementation 'com.alibaba.csp:sentinel-spring-cloud-gateway-adapter:1.8.2'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation('mysql:mysql-connector-java')
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'

@@ -47,6 +47,9 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    // Swagger SpringDoc
+    implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.15'
+
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

@@ -14,7 +14,7 @@ export const injectResponsiveStorage = (app: App, config: ServerConfigs) => {
         theme: config.Theme ?? "default",
         darkMode: config.DarkMode ?? false,
         sidebarStatus: config.SidebarStatus ?? true,
-        epThemeColor: config.EpThemeColor ?? "#409EFF"
+        epThemeColor: config.EpThemeColor ?? "#4795EA"
       },
       configure: Storage.getData("configure", nameSpace) ?? {
         grey: config.Grey ?? false,

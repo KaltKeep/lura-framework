@@ -57,7 +57,6 @@
     "useCssModule": true,
     "useCssVars": true,
     "useLink": true,
-    "useResizeObserver": true,
     "useRoute": true,
     "useRouter": true,
     "useSlots": true,
